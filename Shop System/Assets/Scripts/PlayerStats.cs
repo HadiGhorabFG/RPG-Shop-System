@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,8 +5,7 @@ using UnityEngine;
 public class PlayerStats : ScriptableObject
 {
     public int money;
-    public int negotiationLevel;
-
+    [SerializeField] private int maxInvSlots = 12;
     [SerializeField] private List<Item> inventory;
 
     public List<Item> Inventory
@@ -20,7 +18,7 @@ public class PlayerStats : ScriptableObject
 
     public bool AddItemToInventory(Item item)
     {
-        if (inventory.Count < 12)
+        if (inventory.Count < maxInvSlots)
         {
             inventory.Add(item);
             return true;
