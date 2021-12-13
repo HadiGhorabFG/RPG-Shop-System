@@ -6,18 +6,19 @@ using UnityEngine.UI;
 public class ShopUI : MonoBehaviour
 {
     private static ShopUI instance;
+    private static readonly object padlock = new object();
     public static ShopUI Instance
     {
         get
         {
-            if (instance == null)
+            lock (padlock)
             {
-                return null;
+                return instance;
             }
-
-            return instance;
         }
     }
+    
+    public bool totalCostsDirtyFlag = false;
     
     private ShopItemUI[] buyingItemSlots;
     private ShopItemUI[] sellingItemSlots;
@@ -39,7 +40,10 @@ public class ShopUI : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+        }
         
         buyingItemSlots = new ShopItemUI[maxItemSlots];
         sellingItemSlots = new ShopItemUI[maxItemSlots];
@@ -65,14 +69,11 @@ public class ShopUI : MonoBehaviour
     {
         playerMoney.text = playerStats.money.ToString();
         
-        if(GetSelectedItems(buyingItemSlots).Count != prevCountTotalBuy)
+        if(totalCostsDirtyFlag)
         {
             buyTotal.text = CalculateTotalPrice(buyingItemSlots, prevCountTotalBuy).ToString();
-        }
-        
-        if(GetSelectedItems(sellingItemSlots).Count != prevCountTotalSell)
-        {
             sellTotal.text = CalculateTotalPrice(sellingItemSlots, prevCountTotalSell).ToString();
+            totalCostsDirtyFlag = false;
         }
     }
 

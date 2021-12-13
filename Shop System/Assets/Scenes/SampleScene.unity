@@ -1022,6 +1022,7 @@ GameObject:
   - component: {fileID: 444591431}
   - component: {fileID: 444591433}
   - component: {fileID: 444591432}
+  - component: {fileID: 444591434}
   m_Layer: 0
   m_Name: ShopTrigger
   m_TagString: Untagged
@@ -1070,6 +1071,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.728706, y: 3.218015, z: 3.2613976}
   m_Center: {x: 0.6302818, y: 1.1090075, z: 1.1306992}
+--- !u!114 &444591434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444591430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f125bf0684f6ef947b8e9e6adc7152ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &453936722
 GameObject:
   m_ObjectHideFlags: 0
@@ -1582,6 +1595,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4915abdaced55d248b87fa9ca2559975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  totalCostsDirtyFlag: 0
   playerStats: {fileID: 11400000, guid: f4283abd93679344198a1580a99c1068, type: 2}
   sellMenu: {fileID: 2103727178}
   buyMenu: {fileID: 611268023}
@@ -1917,6 +1931,10 @@ PrefabInstance:
       value: FOOD SHOP
       objectReference: {fileID: 0}
     - target: {fileID: 131774, guid: 1a00cbdd4b8c3c8479ea20b990149e99, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 131774, guid: 1a00cbdd4b8c3c8479ea20b990149e99, type: 3}
       propertyPath: m_NavMeshLayer
       value: 1
       objectReference: {fileID: 0}
@@ -1983,6 +2001,7 @@ GameObject:
   - component: {fileID: 770804962}
   - component: {fileID: 770804961}
   - component: {fileID: 770804965}
+  - component: {fileID: 770804966}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -2084,9 +2103,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69d5fd91a27112e4dbb51685e997d084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  changeMoneyDirtyFlag: 0
   playerStats: {fileID: 11400000, guid: f4283abd93679344198a1580a99c1068, type: 2}
   moneyValueText: {fileID: 136144687}
   notifText: {fileID: 623885281}
+--- !u!114 &770804966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770804960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a70148450bc1ef46a49bf55806f9255, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &773186064
 GameObject:
   m_ObjectHideFlags: 0
@@ -2471,14 +2503,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allItems:
-  - {fileID: 11400000, guid: bb20b48ef9cd53248ae2e0a92a05909b, type: 2}
   - {fileID: 11400000, guid: e3fbf9e3572738744abd0c327f51850a, type: 2}
   - {fileID: 11400000, guid: 9c40c8d19491b3b4085d16134b41765f, type: 2}
+  - {fileID: 11400000, guid: bb20b48ef9cd53248ae2e0a92a05909b, type: 2}
   - {fileID: 11400000, guid: 196045ae572e44f4ca6621fbb274f6f2, type: 2}
   - {fileID: 11400000, guid: a8fa0e49af4d4d84db4ab4e4de4d88c6, type: 2}
   - {fileID: 11400000, guid: 9a5d9cec4c87f434a8b335f6afd640c5, type: 2}
+  - {fileID: 11400000, guid: 9b2f3a64326600549b7a1d3b2f00edab, type: 2}
   levelOneItems: []
   levelTwoItems: []
+  levelThreeItems: []
 --- !u!4 &865683165
 Transform:
   m_ObjectHideFlags: 0
@@ -5923,6 +5957,7 @@ GameObject:
   - component: {fileID: 1918639916}
   - component: {fileID: 1918639917}
   - component: {fileID: 1918639918}
+  - component: {fileID: 1918639919}
   m_Layer: 0
   m_Name: ShopTrigger
   m_TagString: Untagged
@@ -5970,7 +6005,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopCanvas: {fileID: 613974606}
-  shopLevels: 0100000002000000
+  shopLevels: 010000000200000003000000
+--- !u!114 &1918639919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918639915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f125bf0684f6ef947b8e9e6adc7152ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1918977674
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,40 +1,77 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UIHandler : MonoBehaviour
 {
+    private static UIHandler instance;
+    private static readonly object padlock = new object();
+    public static UIHandler Instance
+    {
+        get
+        {
+            lock (padlock)
+            {
+                return instance;
+            }
+        }
+    }
+    
+    public bool changeMoneyDirtyFlag = false;
+
     [SerializeField] private PlayerStats playerStats;
     [SerializeField] private Text moneyValueText;
     [SerializeField] private Text notifText;
 
-    private int prevMoney = -1;
+    //private int prevMoney = -1;
+
+    private StoreInteractNotification storeInteractNotification;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
+
+    private void Start()
+    {
+        storeInteractNotification = GetComponent<StoreInteractNotification>();
+        moneyValueText.text = playerStats.money.ToString();
+    }
 
     private void OnEnable()
     {
         notifText.text = "";
         
-        Shop.onEnterStoreRange += SendNotification;
+        Shop.onEnterStoreRange += SendStoreInteractNotification;
         Shop.onExitStoreRange += WipeNotification;
     }
 
     private void OnDisable()
     {    
-        Shop.onEnterStoreRange -= SendNotification;
+        Shop.onEnterStoreRange -= SendStoreInteractNotification;
         Shop.onExitStoreRange -= WipeNotification;
     }
 
     private void Update()
     {
-        if (playerStats.money != prevMoney)
+        if (changeMoneyDirtyFlag)
         {
             moneyValueText.text = playerStats.money.ToString();
-            prevMoney = playerStats.money;
+            changeMoneyDirtyFlag = false;
         }
     }
 
-    private void SendNotification(string message)
+    private void SendStoreInteractNotification()
     {
-        notifText.text = message;
+        SendTextNotification(storeInteractNotification);
+    }
+
+    private void SendTextNotification(ITextNotification textNotification)
+    {
+        notifText.text = textNotification.Message;
     }
 
     private void WipeNotification()

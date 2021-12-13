@@ -35,6 +35,7 @@ public class ShopItemUI : MonoBehaviour, IInteractableUIItem
     public void OnPress()
     {
         ChangeToggleSelection();
+        ShopUI.Instance.totalCostsDirtyFlag = true;
     }
 
     public void SetItem(Item item, SlotState slotState, TradeState tradeState)

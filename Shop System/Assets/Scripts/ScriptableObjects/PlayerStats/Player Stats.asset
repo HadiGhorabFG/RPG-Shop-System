@@ -10,8 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a0befafce170e324689b946721043eaf, type: 3}
-  m_Name: Player Stats
+  m_Name: 
   m_EditorClassIdentifier: 
-  money: 1850
-  negotiationLevel: 2
-  inventory: []
+  money: 1690
+  maxInvSlots: 12
+  inventory:
+  - {fileID: 11400000, guid: 9b2f3a64326600549b7a1d3b2f00edab, type: 2}
+  - {fileID: 11400000, guid: 196045ae572e44f4ca6621fbb274f6f2, type: 2}
+  - {fileID: 11400000, guid: a8fa0e49af4d4d84db4ab4e4de4d88c6, type: 2}

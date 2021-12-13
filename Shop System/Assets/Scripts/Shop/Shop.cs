@@ -1,9 +1,11 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Shop : MonoBehaviour, IShop, IInteractableUI
 {
-    public delegate void OnEnterStoreRange(string message);
+    public delegate void OnEnterStoreRange();
     public static OnEnterStoreRange onEnterStoreRange;
     
     public delegate void OnExitStoreRange();
@@ -12,12 +14,13 @@ public class Shop : MonoBehaviour, IShop, IInteractableUI
     public List<Item> BuyingItems { get; set; }
     public List<int> ShopLevels { get; set; }
 
-    private IShop activeShop;
-
     protected bool canOpenShop = false;
+
+    private SortItemsWithPrice sortItemsWithPrice;
 
     private void Awake()
     {
+        sortItemsWithPrice = GetComponent<SortItemsWithPrice>();
         BuyingItems = new List<Item>();
     }
 
@@ -33,25 +36,28 @@ public class Shop : MonoBehaviour, IShop, IInteractableUI
             if(buyerStats.AddItemToInventory(item))
             {
                 buyerStats.money -= item.baseBuyValue;
+                UIHandler.Instance.changeMoneyDirtyFlag = true;
             }
         }
     }
 
-    public virtual void Sell(List<Item> itemsToBuy, PlayerStats sellerStats)
+    public virtual void Sell(List<Item> itemsToSell, PlayerStats sellerStats)
     {
-        foreach (var item in itemsToBuy)
+        foreach (var item in itemsToSell)
         {
             if(sellerStats.RemoveItemFromInventory(item))
             {
                 sellerStats.money += item.baseSellValue;
+                UIHandler.Instance.changeMoneyDirtyFlag = true;
             }
-        }
+        } 
     }
 
     public virtual void InitializeShop(Item.type type, IShop activeShop)
     {
         AddItemsToShop(type, ShopLevels);
-        this.activeShop = activeShop;
+        BuyingItems = sortItemsWithPrice.SortBuyPrice(BuyingItems);
+        //this.activeShop = activeShop;
     }
 
     public virtual void OpenMenu(GameObject shopUI)
@@ -59,7 +65,7 @@ public class Shop : MonoBehaviour, IShop, IInteractableUI
         if (shopUI.activeSelf == false)
         {
             shopUI.SetActive(true);
-            UpdateShopUI(activeShop);
+            UpdateShopUI(this);
         }
         else
         {
@@ -73,7 +79,7 @@ public class Shop : MonoBehaviour, IShop, IInteractableUI
         
         if (onEnterStoreRange != null)
         {
-            onEnterStoreRange.Invoke("Press 'Space' to open shop!");
+            onEnterStoreRange.Invoke();
         }
     }
     public virtual void OnTriggerExit(Collider other)
@@ -109,8 +115,19 @@ public class Shop : MonoBehaviour, IShop, IInteractableUI
                 }
             }
         }
+        
+        if (levelValues.Contains(3))
+        {
+            for (int i = 0; i < ItemsManager.Instance.levelThreeItems.Count; i++)
+            {
+                if (ItemsManager.Instance.levelThreeItems[i].Type == typeValue)
+                {
+                    BuyingItems.Add(ItemsManager.Instance.levelThreeItems[i]);
+                }
+            }
+        }
     }
-
+    
     private void UpdateShopUI(IShop activeShop)
     {
         ShopUI.Instance.SetCurrentShop(activeShop);
