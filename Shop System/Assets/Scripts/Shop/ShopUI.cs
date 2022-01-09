@@ -33,9 +33,6 @@ public class ShopUI : MonoBehaviour
     [SerializeField] private Text sellTotal;
 
     [SerializeField] private int maxItemSlots;
-    private int prevCountTotalBuy = 0;
-    private int prevCountTotalSell = 0;
-        
     private IShop activeShop;
 
     private void Awake()
@@ -61,8 +58,8 @@ public class ShopUI : MonoBehaviour
 
     private void Start()
     {
-        buyTotal.text = 0.ToString();
-        sellTotal.text = 0.ToString();
+        buyTotal.text = "0";
+        sellTotal.text = "0";
     }
 
     private void Update()
@@ -71,8 +68,8 @@ public class ShopUI : MonoBehaviour
         
         if(totalCostsDirtyFlag)
         {
-            buyTotal.text = CalculateTotalPrice(buyingItemSlots, prevCountTotalBuy).ToString();
-            sellTotal.text = CalculateTotalPrice(sellingItemSlots, prevCountTotalSell).ToString();
+            buyTotal.text = CalculateTotalPrice(buyingItemSlots).ToString();
+            sellTotal.text = CalculateTotalPrice(sellingItemSlots).ToString();
             totalCostsDirtyFlag = false;
         }
     }
@@ -132,7 +129,7 @@ public class ShopUI : MonoBehaviour
         }
         
         SetItemSlots(activeShop, maxItemSlots, maxItemSlots);
-        buyTotal.text = 0.ToString();
+        buyTotal.text = "0";
     }
     
     public void OnSellButtonClick()
@@ -149,7 +146,7 @@ public class ShopUI : MonoBehaviour
         }
         
         SetItemSlots(activeShop, maxItemSlots, maxItemSlots);
-        sellTotal.text = 0.ToString();
+        sellTotal.text = "0";
     }
 
     public void OnExitButtonClick()
@@ -159,20 +156,20 @@ public class ShopUI : MonoBehaviour
 
     List<Item> GetSelectedItems(ShopItemUI[] itemsSlots)
     {
-        List<Item> selectedItems = new List<Item>();
+        var selectedItems = new List<Item>();
 
-        for (int i = 0; i < itemsSlots.Length; i++)
+        foreach (var item in itemsSlots)
         {
-            if (itemsSlots[i].isSelected && itemsSlots[i].slotState == ShopItemUI.SlotState.Active)
+            if (item.isSelected && item.slotState == ShopItemUI.SlotState.Active)
             {
-                selectedItems.Add(itemsSlots[i].item);
+                selectedItems.Add(item.item);
             }
         }
 
         return selectedItems;
     }
 
-    private int CalculateTotalPrice(ShopItemUI[] items, int prevCount)
+    private int CalculateTotalPrice(ShopItemUI[] items)
     {
         int totalSum = 0;
             
@@ -187,8 +184,6 @@ public class ShopUI : MonoBehaviour
                 totalSum += GetSelectedItems(items)[i].baseSellValue;
             }
         }
-
-        prevCount = GetSelectedItems(items).Count;
         return totalSum;
     }
 }

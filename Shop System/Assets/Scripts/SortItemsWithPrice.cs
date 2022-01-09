@@ -6,39 +6,14 @@ public class SortItemsWithPrice : MonoBehaviour
 {
     public List<Item> SortBuyPrice(List<Item> list)
     {
-        List<Item> sortedList = new List<Item>();
-        int arrayIndex = 0;
-        int listIndex = 0;
-        int[] array = new int[list.Count];
-
-        for (int i = 0; i < list.Count; i++)
-        {
-            array[i] = list[i].baseBuyValue;
-        }
-
-        Array.Sort(array);
-        Array.Reverse(array);
-
-        while(sortedList.Count != list.Count)
-        {
-            if (array[arrayIndex] == list[listIndex].baseBuyValue && !sortedList.Contains(list[listIndex]))
-            {
-                sortedList.Add(list[listIndex]);
-                arrayIndex++;
-                listIndex = 0;
-            }
-            else
-            {
-                listIndex++;
-            }
-        }
-        
-        return sortedList;
+        list.Sort((a, b) => a.baseBuyValue.CompareTo(b.baseBuyValue));
+        list.Reverse();
+        return list;
     }
     
-    public List<Item> SortSellPrice(List<Item> list)
+    public static List<Item> SortSellPrice(List<Item> list) //idk, static??
     {
-        List<Item> sortedList = new List<Item>();
+        /*List<Item> sortedList = new List<Item>();
         int arrayIndex = 0;
         int listIndex = 0;
         int[] array = new int[list.Count];
@@ -65,6 +40,10 @@ public class SortItemsWithPrice : MonoBehaviour
             }
         }
         
-        return sortedList;
+        return sortedList;*/
+        
+        list.Sort((a, b) => a.baseSellValue.CompareTo(b.baseSellValue));
+        list.Reverse();
+        return list;
     }
 }

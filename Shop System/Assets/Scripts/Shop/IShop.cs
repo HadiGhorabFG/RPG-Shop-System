@@ -9,6 +9,4 @@ public interface IShop
     void Buy(List<Item> itemsToBuy, PlayerStats buyerStats);
     void Sell(List<Item> itemsToSell, PlayerStats sellerStats);
     void InitializeShop(Item.type type, IShop shop);
-    void OnTriggerEnter(Collider other);
-    void OnTriggerExit(Collider other);
 }

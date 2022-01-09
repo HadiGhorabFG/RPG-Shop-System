@@ -23,7 +23,6 @@ public class UIHandler : MonoBehaviour
     [SerializeField] private Text moneyValueText;
     [SerializeField] private Text notifText;
 
-    //private int prevMoney = -1;
 
     private StoreInteractNotification storeInteractNotification;
 
@@ -45,14 +44,14 @@ public class UIHandler : MonoBehaviour
     {
         notifText.text = "";
         
-        Shop.onEnterStoreRange += SendStoreInteractNotification;
-        Shop.onExitStoreRange += WipeNotification;
+        ShopInWorld.onEnterStoreRange += SendStoreInteractNotification;
+        ShopInWorld.onExitStoreRange += WipeNotification;
     }
 
     private void OnDisable()
     {    
-        Shop.onEnterStoreRange -= SendStoreInteractNotification;
-        Shop.onExitStoreRange -= WipeNotification;
+        ShopInWorld.onEnterStoreRange -= SendStoreInteractNotification;
+        ShopInWorld.onExitStoreRange -= WipeNotification;
     }
 
     private void Update()

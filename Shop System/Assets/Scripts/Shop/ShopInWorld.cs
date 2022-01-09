@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Shop : MonoBehaviour, IShop, IInteractableUI
+public class ShopInWorld : MonoBehaviour, IShop, IInteractableUI
 {
     public delegate void OnEnterStoreRange();
     public static OnEnterStoreRange onEnterStoreRange;

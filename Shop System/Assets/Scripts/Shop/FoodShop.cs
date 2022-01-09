@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FoodShop : Shop
+public class FoodShop : ShopInWorld
 {
     [SerializeField] private GameObject shopCanvas;
     [SerializeField] private List<int> shopLevels;
@@ -24,7 +24,7 @@ public class FoodShop : Shop
 
     public override void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if(other.CompareTag(TagConsts.playerTag))
         {
             base.OnTriggerEnter(other);
         }
@@ -32,7 +32,7 @@ public class FoodShop : Shop
     
     public override void OnTriggerExit(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if(other.CompareTag(TagConsts.playerTag))
         {
             base.OnTriggerExit(other);
         }
