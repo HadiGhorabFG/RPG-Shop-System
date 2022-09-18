@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,12 +16,16 @@ public class ItemsManager : MonoBehaviour
             }
         }
     }
+
+    [SerializeField] private PlayerStats playerStats;
     
-    public List<Item> allItems;
+    public Dictionary<int, List<Item>> itemsByLevel = new Dictionary<int, List<Item>>();
+
+    [ReadOnlyWhenPlaying] public List<Item> allItems;
     
-    public List<Item> levelOneItems;
-    public List<Item> levelTwoItems;
-    public List<Item> levelThreeItems;
+    [HideInInspector] public List<Item> levelOneItems;
+    [HideInInspector] public List<Item> levelTwoItems;
+    [HideInInspector] public List<Item> levelThreeItems;
 
     private void Awake()
     {
@@ -44,5 +49,9 @@ public class ItemsManager : MonoBehaviour
                     break;
             }
         }
+        
+        itemsByLevel.Add(1, levelOneItems);
+        itemsByLevel.Add(2, levelTwoItems);
+        itemsByLevel.Add(3, levelThreeItems);
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +19,15 @@ public class ShopUI : MonoBehaviour
         }
     }
     
+    public enum SortingState
+    {
+        Price,
+        Level,
+        Quantity,
+    }
+
+    public SortingState sortingState;
+    
     public bool totalCostsDirtyFlag = false;
     
     private ShopItemUI[] buyingItemSlots;
@@ -31,6 +41,8 @@ public class ShopUI : MonoBehaviour
     [SerializeField] private Text playerMoney;
     [SerializeField] private Text buyTotal;
     [SerializeField] private Text sellTotal;
+    [SerializeField] private Text inventoryCountText;
+    [SerializeField] private TextMeshProUGUI sortingOptionText;
 
     [SerializeField] private int maxItemSlots;
     private IShop activeShop;
@@ -60,11 +72,14 @@ public class ShopUI : MonoBehaviour
     {
         buyTotal.text = "0";
         sellTotal.text = "0";
+    
+        OnSortingValueChange();
     }
 
     private void Update()
     {
         playerMoney.text = playerStats.money.ToString();
+        inventoryCountText.text = playerStats.inventory.Count + "/" + playerStats.maxInvSlots;
         
         if(totalCostsDirtyFlag)
         {
@@ -72,6 +87,26 @@ public class ShopUI : MonoBehaviour
             sellTotal.text = CalculateTotalPrice(sellingItemSlots).ToString();
             totalCostsDirtyFlag = false;
         }
+    }
+
+    public void OnSortingValueChange()
+    {
+        SetSortingState();
+        playerStats.inventory = SortItems.Sort(playerStats.inventory, sortingState, false);
+        activeShop.BuyingItems = SortItems.Sort(activeShop.BuyingItems, sortingState, true);
+        SetItemSlots(activeShop, maxItemSlots,maxItemSlots);
+    }
+
+    private void SetSortingState()
+    {
+        string sortOption = sortingOptionText.text;
+
+        if (sortOption == "Price")
+            sortingState = SortingState.Price;
+        else if (sortOption == "Level")
+            sortingState = SortingState.Level;
+        else if (sortOption == "Quantity")
+            sortingState = SortingState.Quantity;
     }
 
     public void SetCurrentShop(IShop activeShop)
@@ -86,7 +121,7 @@ public class ShopUI : MonoBehaviour
         {
             if (i < shop.BuyingItems.Count)
             {
-                buyingItemSlots[i].SetItem(shop.BuyingItems[i], ShopItemUI.SlotState.Active, ShopItemUI.TradeState.Buying);
+                buyingItemSlots[i].SetItem(shop.BuyingItems[i].item, ShopItemUI.SlotState.Active, ShopItemUI.TradeState.Buying);
             }
             else
             {
@@ -98,7 +133,7 @@ public class ShopUI : MonoBehaviour
         {
             if (i < playerStats.Inventory.Count)
             {
-                sellingItemSlots[i].SetItem(playerStats.Inventory[i], ShopItemUI.SlotState.Active, ShopItemUI.TradeState.Selling);
+                sellingItemSlots[i].SetItem(playerStats.Inventory[i].item, ShopItemUI.SlotState.Active, ShopItemUI.TradeState.Selling);
             }
             else
             {
@@ -171,6 +206,7 @@ public class ShopUI : MonoBehaviour
 
     private int CalculateTotalPrice(ShopItemUI[] items)
     {
+        //todo: can refactor ?
         int totalSum = 0;
             
         for (int i = 0; i < GetSelectedItems(items).Count; i++)

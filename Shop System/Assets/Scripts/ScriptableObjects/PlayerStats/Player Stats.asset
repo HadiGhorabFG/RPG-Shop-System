@@ -12,9 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0befafce170e324689b946721043eaf, type: 3}
   m_Name: Player Stats
   m_EditorClassIdentifier: 
-  money: 1690
+  money: 47070
   maxInvSlots: 12
   inventory:
-  - {fileID: 11400000, guid: 9b2f3a64326600549b7a1d3b2f00edab, type: 2}
-  - {fileID: 11400000, guid: 196045ae572e44f4ca6621fbb274f6f2, type: 2}
-  - {fileID: 11400000, guid: a8fa0e49af4d4d84db4ab4e4de4d88c6, type: 2}
+  - name: Dragontooth Dagger
+    item: {fileID: 11400000, guid: 9b2f3a64326600549b7a1d3b2f00edab, type: 2}
+    quantity: 1
+  - name: Dragontooth Dagger
+    item: {fileID: 11400000, guid: 9b2f3a64326600549b7a1d3b2f00edab, type: 2}
+    quantity: 1
+  - name: Sword of The Lost Pirate
+    item: {fileID: 11400000, guid: bb20b48ef9cd53248ae2e0a92a05909b, type: 2}
+    quantity: 2
+  - name: Executioner
+    item: {fileID: 11400000, guid: e3fbf9e3572738744abd0c327f51850a, type: 2}
+    quantity: 1
+  - name: Executioner
+    item: {fileID: 11400000, guid: e3fbf9e3572738744abd0c327f51850a, type: 2}
+    quantity: 1
+  - name: Bronze Sword
+    item: {fileID: 11400000, guid: 9c40c8d19491b3b4085d16134b41765f, type: 2}
+    quantity: 1
+  - name: Bronze Sword
+    item: {fileID: 11400000, guid: 9c40c8d19491b3b4085d16134b41765f, type: 2}
+    quantity: 1

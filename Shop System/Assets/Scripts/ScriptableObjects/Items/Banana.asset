@@ -16,5 +16,6 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 56fadeccc45eaab46a1acacc859bdb3f, type: 3}
   name: Banana
   itemLevel: 1
+  stackable: 1
   baseBuyValue: 20
   baseSellValue: 5

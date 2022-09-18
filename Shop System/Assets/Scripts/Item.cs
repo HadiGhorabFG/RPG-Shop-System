@@ -12,6 +12,7 @@ public class Item : ScriptableObject
     public Sprite icon;
     public string name;
     public int itemLevel;
+    public bool stackable = false;
     public int baseBuyValue;
     public int baseSellValue;
 }

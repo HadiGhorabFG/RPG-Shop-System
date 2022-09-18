@@ -10,18 +10,14 @@ public class ShopInWorld : MonoBehaviour, IShop, IInteractableUI
     
     public delegate void OnExitStoreRange();
     public static OnExitStoreRange onExitStoreRange;
-    
-    public List<Item> BuyingItems { get; set; }
+
+    public List<PlayerStats.FItemData> BuyingItems { get; set; }
     public List<int> ShopLevels { get; set; }
 
     protected bool canOpenShop = false;
-
-    private SortItemsWithPrice sortItemsWithPrice;
-
     private void Awake()
     {
-        sortItemsWithPrice = GetComponent<SortItemsWithPrice>();
-        BuyingItems = new List<Item>();
+        BuyingItems = new List<PlayerStats.FItemData>();
     }
 
     public virtual void Buy(List<Item> itemsToBuy, PlayerStats buyerStats)
@@ -56,8 +52,6 @@ public class ShopInWorld : MonoBehaviour, IShop, IInteractableUI
     public virtual void InitializeShop(Item.type type, IShop activeShop)
     {
         AddItemsToShop(type, ShopLevels);
-        BuyingItems = sortItemsWithPrice.SortBuyPrice(BuyingItems);
-        //this.activeShop = activeShop;
     }
 
     public virtual void OpenMenu(GameObject shopUI)
@@ -94,35 +88,16 @@ public class ShopInWorld : MonoBehaviour, IShop, IInteractableUI
 
     private void AddItemsToShop(Item.type typeValue, List<int> levelValues)
     {
-        if (levelValues.Contains(1))
+        foreach (var level in ShopLevels)
         {
-            for (int i = 0; i < ItemsManager.Instance.levelOneItems.Count; i++)
+            if (levelValues.Contains(level))
             {
-                if (ItemsManager.Instance.levelOneItems[i].Type == typeValue)
+                foreach (var item in ItemsManager.Instance.itemsByLevel[level])
                 {
-                    BuyingItems.Add(ItemsManager.Instance.levelOneItems[i]);
-                }
-            }
-        }
-        
-        if (levelValues.Contains(2))
-        {
-            for (int i = 0; i < ItemsManager.Instance.levelTwoItems.Count; i++)
-            {
-                if (ItemsManager.Instance.levelTwoItems[i].Type == typeValue)
-                {
-                    BuyingItems.Add(ItemsManager.Instance.levelTwoItems[i]);
-                }
-            }
-        }
-        
-        if (levelValues.Contains(3))
-        {
-            for (int i = 0; i < ItemsManager.Instance.levelThreeItems.Count; i++)
-            {
-                if (ItemsManager.Instance.levelThreeItems[i].Type == typeValue)
-                {
-                    BuyingItems.Add(ItemsManager.Instance.levelThreeItems[i]);
+                    if(item.Type != typeValue)
+                        continue;
+                    
+                    BuyingItems.Add(new PlayerStats.FItemData(item, 1));
                 }
             }
         }

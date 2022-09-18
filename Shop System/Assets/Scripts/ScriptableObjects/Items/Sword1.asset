@@ -16,5 +16,6 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: a90d2c7f5d23cb24aa498cc76e545349, type: 3}
   name: Sword of The Lost Pirate
   itemLevel: 2
+  stackable: 1
   baseBuyValue: 200
   baseSellValue: 50

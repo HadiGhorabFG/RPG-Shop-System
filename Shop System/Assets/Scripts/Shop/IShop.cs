@@ -3,7 +3,7 @@ using UnityEngine;
 
 public interface IShop
 {
-    List<Item> BuyingItems {get; set; }
+    List<PlayerStats.FItemData> BuyingItems {get; set; }
     List<int> ShopLevels { get; set; }
     
     void Buy(List<Item> itemsToBuy, PlayerStats buyerStats);

@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class ShopItemUI : MonoBehaviour, IInteractableUIItem
 {
     public Item item;
-    
+
     public enum SlotState
     {
         Active, Empty
@@ -22,7 +22,9 @@ public class ShopItemUI : MonoBehaviour, IInteractableUIItem
     [SerializeField] private Image itemIcon;
     [SerializeField] private Text tradeValueText;
     [SerializeField] private Text itemLevelText;
-
+    [SerializeField] private Text itemQuantityText;
+    [SerializeField] private PlayerStats playerStats;
+    
     public Toggle toggle;
     
     public bool isSelected = false;
@@ -54,6 +56,7 @@ public class ShopItemUI : MonoBehaviour, IInteractableUIItem
                 case TradeState.Selling:
                     this.tradeState = tradeState;
                     tradeValueText.text = item.baseSellValue.ToString();
+                    itemQuantityText.text = playerStats.GetItem(item).quantity.ToString();
                     break;                
             }
             
@@ -67,7 +70,8 @@ public class ShopItemUI : MonoBehaviour, IInteractableUIItem
             this.slotState = slotState;
             itemIcon.sprite = null;
             tradeValueText.text = "";
-            itemLevelText.text = "";   
+            itemLevelText.text = "";
+            itemQuantityText.text = "";
             GetComponent<Toggle>().interactable = false;
         }
     }

@@ -12,21 +12,6 @@ public class SwordShop : ShopInWorld
         InitializeShop(Item.type.sword, this);
     }
 
-    public override void InitializeShop(Item.type type, IShop activeShop)
-    {
-        base.InitializeShop(type, activeShop);
-    }
-
-    public override void Buy(List<Item> itemsToBuy, PlayerStats buyerStats)
-    {
-        base.Buy(itemsToBuy, buyerStats);
-    }    
-    
-    public override void Sell(List<Item> itemsToSell, PlayerStats sellerStats)
-    {
-        base.Sell(itemsToSell, sellerStats);
-    }
-
     public override void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag(TagConsts.playerTag))
@@ -41,10 +26,6 @@ public class SwordShop : ShopInWorld
         {
             base.OnTriggerExit(other);
         }
-    }
-    public override void OpenMenu(GameObject shopUI)
-    {
-        base.OpenMenu(shopUI);
     }
     
     private void Update()

@@ -12,16 +12,6 @@ public class FoodShop : ShopInWorld
         InitializeShop(Item.type.food, this);
     }
 
-    public override void Buy(List<Item> itemsToBuy, PlayerStats buyerStats)
-    {
-        base.Buy(itemsToBuy, buyerStats);
-    }    
-    
-    public override void Sell(List<Item> itemsToSell, PlayerStats sellerStats)
-    {
-        base.Sell(itemsToSell, sellerStats);
-    }
-
     public override void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag(TagConsts.playerTag))
@@ -36,10 +26,6 @@ public class FoodShop : ShopInWorld
         {
             base.OnTriggerExit(other);
         }
-    }
-    public override void OpenMenu(GameObject shopUI)
-    {
-        base.OpenMenu(shopUI);
     }
     
     private void Update()

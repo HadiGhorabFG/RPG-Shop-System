@@ -16,5 +16,6 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: fcd0615cdd97e5942bed9ff372138658, type: 3}
   name: Dragontooth Dagger
   itemLevel: 3
-  baseBuyValue: 400
-  baseSellValue: 200
+  stackable: 0
+  baseBuyValue: 1
+  baseSellValue: 1
