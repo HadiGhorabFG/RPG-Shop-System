@@ -1,0 +1,31 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Scripts/UIBuilder/InventoryUSS.uss?fileID=7433441132597879392&amp;guid=811c9146f267b8848bf305a28f26a687&amp;type=3#InventoryUSS" />
+    <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center;">
+        <ui:VisualElement name="InventoryRoot" class="slotPriceText" style="visibility: visible; max-width: 960px; max-height: 810px; width: 920px; height: 810px;">
+            <ui:VisualElement name="Inventory" style="flex-grow: 1; width: 100%; height: 100%; max-width: 100%; max-height: 100%; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; background-color: rgb(28, 32, 36); border-left-color: rgb(255, 197, 0); border-right-color: rgb(255, 197, 0); border-top-color: rgb(255, 197, 0); border-bottom-color: rgb(255, 197, 0); border-left-width: 0; border-right-width: 0; border-top-width: 5px; border-bottom-width: 0;">
+                <ui:VisualElement name="Header" class="InventoryHeaderContainer">
+                    <ui:VisualElement style="flex-direction: row;">
+                        <ui:Label text="Inventory" display-tooltip-when-elided="true" name="Name" class="HeaderText" style="-unity-text-align: upper-left; border-bottom-width: 0;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-direction: row;">
+                        <ui:DropdownField label="Sort" index="0" choices="Price,Quantity,Level,Type" name="SortOptions" style="font-size: 30px; -unity-text-align: upper-right; height: 50px; width: 380px; margin-left: -80px; -unity-text-outline-width: 0;" />
+                        <ui:Label text="0/24" display-tooltip-when-elided="true" name="Space" class="HeaderText" style="-unity-text-align: upper-left; border-bottom-width: 0; padding-left: 30px;" />
+                        <ui:Label text="500€" display-tooltip-when-elided="true" name="Money" class="HeaderText" style="-unity-text-align: upper-right; border-bottom-width: 0; margin-left: 30px;" />
+                        <ui:Button text="X" display-tooltip-when-elided="true" name="ExitButton" class="ShopExitButton" style="background-color: rgba(188, 188, 188, 0); margin-left: 30px; border-bottom-width: 5px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="SlotContainer" class="SlotContainer" />
+                <ui:VisualElement class="botContainer">
+                    <ui:VisualElement style="padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px;">
+                        <ui:Label text="Name of Highlighted Item" display-tooltip-when-elided="true" name="HighlightedItemText" class="HighlightedItemText" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-direction: row;">
+                        <ui:Button text="Sell" display-tooltip-when-elided="true" name="SellButton" class="ShopTradeContainer" style="background-color: rgba(188, 188, 188, 0); margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0;" />
+                        <ui:Label text="0" display-tooltip-when-elided="true" name="TotalSellText" class="ShopTradeContainer" style="border-bottom-width: 1px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="GhostIcon" style="position: absolute; visibility: hidden; width: 128px; height: 128px;" />
+    </ui:VisualElement>
+</ui:UXML>

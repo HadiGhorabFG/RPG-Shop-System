@@ -1,0 +1,200 @@
+.slotContainer {
+    width: 140px;
+    height: 140px;
+    margin: 5px;
+    border-left-color: rgb(48, 48, 48);
+    border-right-color: rgb(48, 48, 48);
+    border-top-color: rgb(48, 48, 48);
+    border-bottom-color: rgb(48, 48, 48);
+    background-color: rgb(9, 19, 21);
+    background-image: url('project://database/Assets/Sprites/ItemSlotBackground.png?fileID=21300000&guid=7c0e1dfa9273ff54bb462f276f672ec6&type=3#ItemSlotBackground');
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.slotIcon {
+    padding: 15px;
+    flex-shrink: 0;
+    flex-grow: 1;
+}
+
+.slotText {
+    -unity-font-style: bold;
+    font-size: 25px;
+}
+
+.slotPriceText {
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    color: rgb(255, 197, 0);
+    -unity-text-align: lower-right;
+    padding-left: -10px;
+    padding-right: -10px;
+    padding-top: -10px;
+    padding-bottom: -10px;
+    text-shadow: 1px 1px 0 rgb(0, 0, 0);
+}
+
+.slotQuantityText {
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    color: rgb(230, 213, 184);
+    -unity-text-align: lower-left;
+    padding-left: -10px;
+    padding-right: -10px;
+    padding-top: -10px;
+    padding-bottom: -10px;
+    text-shadow: 1px 1px 0 rgb(0, 0, 0);
+}
+
+.HeaderText {
+    font-size: 30px;
+    color: rgb(255, 197, 0);
+    padding-bottom: 10px;
+    border-left-color: rgb(64, 74, 82);
+    border-right-color: rgb(64, 74, 82);
+    border-top-color: rgb(64, 74, 82);
+    border-bottom-color: rgb(64, 74, 82);
+    border-bottom-width: 0;
+    max-width: none;
+    min-width: auto;
+    -unity-text-outline-width: 0;
+}
+
+.slotIconPropertiesContainer {
+    flex-grow: 1;
+    flex-direction: row;
+}
+
+.ShopTradeContainer {
+    -unity-text-align: lower-center;
+    border-left-color: rgb(255, 197, 0);
+    border-right-color: rgb(255, 197, 0);
+    border-top-color: rgb(255, 197, 0);
+    border-bottom-color: rgb(255, 197, 0);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 5px;
+    font-size: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 100px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 0;
+    margin-bottom: 0;
+    height: 50px;
+}
+
+.ShopTradeContainer:active {
+    border-bottom-width: 1px;
+}
+
+.botContainer {
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    align-items: center;
+}
+
+.InventoryHeaderContainer {
+    flex-direction: row;
+    border-left-color: rgb(64, 74, 82);
+    border-right-color: rgb(64, 74, 82);
+    border-top-color: rgb(64, 74, 82);
+    border-bottom-color: rgb(64, 74, 82);
+    border-bottom-width: 1px;
+    justify-content: space-between;
+}
+
+.ShopExitButton {
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    margin-left: 0;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    -unity-text-align: middle-center;
+    border-left-color: rgb(255, 197, 0);
+    border-right-color: rgb(255, 197, 0);
+    border-top-color: rgb(255, 197, 0);
+    border-bottom-color: rgb(255, 197, 0);
+    width: 40px;
+    align-items: stretch;
+    height: 40px;
+    justify-content: flex-start;
+    font-size: 30px;
+}
+
+.unity-base-field__input {
+    background-color: rgb(0, 19, 21);
+    border-top-color: rgb(255, 197, 0);
+    border-top-width: 1px;
+    border-right-width: 0;
+    border-left-width: 0;
+    border-bottom-width: 0;
+}
+
+.slotContainer .unity-base-field__input {
+    background-color: rgba(50, 19, 21, 0);
+    border-top-color: rgb(255, 197, 0);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-left-width: 0;
+    border-bottom-width: 0;
+}
+
+.slotContainer .unity-base-slider--horizontal .unity-base-slider__dragger {
+    height: 20px;
+    margin-top: -10px;
+    background-color: rgb(195, 137, 0);
+    border-color: rgb(255, 197, 0);
+}
+
+.slotContainer .unity-base-slider .unity-base-slider__tracker {
+    opacity: 0.8;
+    background-color: rgb(155, 97, 0);
+    border-color: rgb(205, 157, 0);
+}
+
+.unity-base-popup-field__active {
+    background-color: rgb(28, 32, 36);
+}
+
+.SlotContainer {
+    flex-grow: 1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    border-bottom-width: 0;
+    border-left-color: rgb(64, 74, 82);
+    border-right-color: rgb(64, 74, 82);
+    border-top-color: rgb(64, 74, 82);
+    border-bottom-color: rgb(64, 74, 82);
+}
+
+.HighlightedItemText {
+    font-size: 25px;
+}
+
+.itemQuantitySlider {
+    width: 90%;
+    height: 0;
+}
