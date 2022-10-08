@@ -21,8 +21,6 @@ public class ItemsManager : MonoBehaviour
     
     public Dictionary<int, List<Item>> itemsByLevel = new Dictionary<int, List<Item>>();
 
-    [ReadOnlyWhenPlaying] public List<Item> allItems;
-    
     [HideInInspector] public List<Item> levelOneItems;
     [HideInInspector] public List<Item> levelTwoItems;
     [HideInInspector] public List<Item> levelThreeItems;
@@ -33,19 +31,22 @@ public class ItemsManager : MonoBehaviour
         {
             instance = this;
         }
+
+        ItemsContainer.UpdateItems();
+        List<Item> items = ItemsContainer.allItems;
         
-        for (int i = 0; i < allItems.Count; i++)
+        for (int i = 0; i < items.Count; i++)
         {
-            switch (allItems[i].itemLevel)
+            switch (items[i].itemLevel)
             {
                 case 1: 
-                    levelOneItems.Add(allItems[i]);
+                    levelOneItems.Add(items[i]);
                     break;
                 case 2:
-                    levelTwoItems.Add(allItems[i]);
+                    levelTwoItems.Add(items[i]);
                     break;
                 case 3:
-                    levelThreeItems.Add(allItems[i]);
+                    levelThreeItems.Add(items[i]);
                     break;
             }
         }

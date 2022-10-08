@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2fd94c93e1c93f46a2096b4c92cf92b, type: 3}
   m_Name: Armour7
   m_EditorClassIdentifier: 
+  id: D7A4E969-FCB1-4590-A22A-9AB42277209D
   Type: 2
   icon: {fileID: 21300000, guid: b8fb302c5768e334ca82005f50e58121, type: 3}
   name: Iron Pants
   itemLevel: 3
   stackable: 0
   baseBuyValue: 200
-  baseSellValue: 130
+  baseSellValue: 100
+  sellPercentage: 0.5

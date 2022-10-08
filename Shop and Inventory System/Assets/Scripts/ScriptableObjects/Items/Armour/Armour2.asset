@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2fd94c93e1c93f46a2096b4c92cf92b, type: 3}
   m_Name: Armour2
   m_EditorClassIdentifier: 
+  id: 66E9ECD2-EB3F-4468-A4CA-5CC1807DC12F
   Type: 2
   icon: {fileID: 21300000, guid: da09804303305f542a686824630e7269, type: 3}
   name: Bronze Belt
@@ -19,3 +20,4 @@ MonoBehaviour:
   stackable: 0
   baseBuyValue: 30
   baseSellValue: 15
+  sellPercentage: 0.5

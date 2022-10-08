@@ -18,4 +18,5 @@ MonoBehaviour:
   itemLevel: 3
   stackable: 0
   baseBuyValue: 300
-  baseSellValue: 100
+  baseSellValue: 150
+  sellPrecentage: 0.5

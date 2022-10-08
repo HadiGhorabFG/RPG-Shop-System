@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 0
   icon: {fileID: 21300000, guid: 5d7061fc7da05ce44add317708ec7215, type: 3}
-  name: Bow of The Lost Pirate
+  name: Bow of The Lost
   itemLevel: 3
   stackable: 0
   baseBuyValue: 200
-  baseSellValue: 50
+  baseSellValue: 100
+  sellPrecentage: 0.5
