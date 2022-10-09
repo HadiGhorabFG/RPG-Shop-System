@@ -1075,30 +1075,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStats: {fileID: 11400000, guid: f4283abd93679344198a1580a99c1068, type: 2}
-  allItems:
-  - {fileID: 11400000, guid: bb20b48ef9cd53248ae2e0a92a05909b, type: 2}
-  - {fileID: 11400000, guid: 9c40c8d19491b3b4085d16134b41765f, type: 2}
-  - {fileID: 11400000, guid: e3fbf9e3572738744abd0c327f51850a, type: 2}
-  - {fileID: 11400000, guid: 9b2f3a64326600549b7a1d3b2f00edab, type: 2}
-  - {fileID: 11400000, guid: c21a95ce9ac810c4eae75d20f9a85226, type: 2}
-  - {fileID: 11400000, guid: 1ad6a52dbb4d9fa4080afa3b34319afb, type: 2}
-  - {fileID: 11400000, guid: f8c2984ebb577b24f9ffcd6ee988f3e5, type: 2}
-  - {fileID: 11400000, guid: a8fa0e49af4d4d84db4ab4e4de4d88c6, type: 2}
-  - {fileID: 11400000, guid: d48fbe449778e3b40af5b613293ad1b8, type: 2}
-  - {fileID: 11400000, guid: 9a5d9cec4c87f434a8b335f6afd640c5, type: 2}
-  - {fileID: 11400000, guid: 196045ae572e44f4ca6621fbb274f6f2, type: 2}
-  - {fileID: 11400000, guid: e232559b19e533a4c844f1d3b0641711, type: 2}
-  - {fileID: 11400000, guid: e1816bf690513f54fbbb34952ca49c1e, type: 2}
-  - {fileID: 11400000, guid: 1bedbc11d71c5454b964db7415fe7d01, type: 2}
-  - {fileID: 11400000, guid: c4e859d47abaf054481f44fbd1293619, type: 2}
-  - {fileID: 11400000, guid: a07d30336c57a5e4e8b2ad9714391636, type: 2}
-  - {fileID: 11400000, guid: fad3bc05d6475c44e8f76cf37ad5a54f, type: 2}
-  - {fileID: 11400000, guid: d8be667550678b643828d8db47abe685, type: 2}
-  - {fileID: 11400000, guid: e344debe56ec41949b1a485ecb852a10, type: 2}
-  - {fileID: 11400000, guid: e528a693fee54ba449f9a1e06aa1b42a, type: 2}
-  - {fileID: 11400000, guid: 8fcc1865991613744884f80636bc33b1, type: 2}
-  - {fileID: 11400000, guid: ab3ec2646d14d5348a8678e2fe557674, type: 2}
-  - {fileID: 11400000, guid: fc956f2b95fb0c048ac4b6bf91e48e73, type: 2}
   levelOneItems: []
   levelTwoItems: []
   levelThreeItems: []
@@ -1630,7 +1606,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopName: Armour Shop
-  shopLevels: 0100000002000000
+  shopLevels: 010000000200000003000000
 --- !u!1001 &1160291343
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -62,4 +62,45 @@ public class SortItems : MonoBehaviour
             return list;
         }
     }
+    
+    // Sorting for Editor ItemDatabase
+    public static List<Item> Sort(List<Item> list, ItemDatabase.SortState state)
+    {
+        return SortItems();
+        
+        List<Item> SortItems()
+        {
+            switch (state)
+            {
+                case ItemDatabase.SortState.Name:
+                    SortName();
+                    break;
+                case ItemDatabase.SortState.Level:
+                    SortLevel();
+                    break;
+                case ItemDatabase.SortState.Type:
+                    SortType();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(state), state, null);
+            }
+
+            void SortName()
+            {
+                list.Sort((a, b) => String.Compare(a.name, b.name, StringComparison.Ordinal));
+            }            
+            
+            void SortLevel()
+            {
+                list.Sort((a, b) => a.itemLevel.CompareTo(b.itemLevel));
+            }            
+
+            void SortType()
+            {
+                list.Sort((a, b) => a.Type.CompareTo(b.Type));
+            }
+
+            return list;
+        }
+    }
 }

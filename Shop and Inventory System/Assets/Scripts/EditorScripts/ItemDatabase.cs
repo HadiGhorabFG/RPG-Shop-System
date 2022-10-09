@@ -15,6 +15,7 @@ public class ItemDatabase : EditorWindow
     private Sprite defaultItemIcon;
 
     private VisualElement itemsTab;
+    private DropdownField sortDropdown;
     private static VisualTreeAsset itemRowTemplate;
     private ListView itemListView;
     private float itemHeight = 40;
@@ -23,15 +24,20 @@ public class ItemDatabase : EditorWindow
     private VisualElement largeDisplayIcon;
     private Item activeItem;
 
+    public enum SortState
+    {
+        Name, 
+        Type,
+        Level,
+    }
+
+    public SortState sortState;
+
     [MenuItem("WUG/Item Database")]
     public static void Init()
     {
         ItemDatabase wnd = GetWindow<ItemDatabase>();
         wnd.titleContent = new GUIContent("Item Database");
-        
-        Vector2 size = new Vector2(800, 475);
-        wnd.minSize = size;
-        wnd.maxSize = size;
     }
     
     // CreateGUI is called when the EditorWindow’s rootVisualElement is ready to be drawn. 
@@ -49,6 +55,7 @@ public class ItemDatabase : EditorWindow
         
         defaultItemIcon = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Sprites/UnknownIcon.png", typeof(Sprite));
         itemsTab = rootVisualElement.Q<VisualElement>("ItemsTab");
+        sortDropdown = itemsTab.Q<DropdownField>("SortDropdown");
 
         detailSection = rootVisualElement.Q<ScrollView>("ScrollView_Details");
         detailSection.style.visibility = Visibility.Hidden;
@@ -56,9 +63,11 @@ public class ItemDatabase : EditorWindow
 
         rootVisualElement.Q<Button>("Btn_AddItem").clicked += AddItem_OnClick;
         rootVisualElement.Q<Button>("Btn_DeleteItem").clicked += DeleteItem_OnClick;
-
+        sortDropdown.RegisterValueChangedCallback(SortItems);
+        
         LoadAllItems();
         GenerateListView();
+        SortItems(null);
         
         detailSection.Q<TextField>("ItemName")
             .RegisterValueChangedCallback(evt =>
@@ -110,6 +119,21 @@ public class ItemDatabase : EditorWindow
         itemsTab.Add(itemListView);
 
         itemListView.onSelectionChange += ListView_onSelectionChange;
+    }
+    
+    private void SortItems(ChangeEvent<string> evt)
+    {
+        string sortOption = sortDropdown.value;
+
+        if (sortOption == "Name")
+            sortState = SortState.Name;
+        else if (sortOption == "Level")
+            sortState = SortState.Level;
+        else if (sortOption == "Type")
+            sortState = SortState.Type;
+
+        itemDatabase = global::SortItems.Sort(itemDatabase, sortState);
+        itemListView.Rebuild();
     }
     
     private void AddItem_OnClick()

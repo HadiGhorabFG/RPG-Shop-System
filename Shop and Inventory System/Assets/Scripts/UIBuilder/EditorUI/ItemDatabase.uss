@@ -16,3 +16,29 @@
 .unity-base-text-field__input {
     -unity-text-align: upper left;
 }
+
+.ItemTabText {
+    flex-grow: 0;
+    -unity-font-style: bold;
+    font-size: 24px;
+    -unity-text-align: middle-left;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 1px;
+    padding-right: 2px;
+}
+
+.ItemTabText {
+    flex-grow: 0;
+    -unity-font-style: bold;
+    font-size: 24px;
+    -unity-text-align: middle-left;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 1px;
+    padding-right: 2px;
+}

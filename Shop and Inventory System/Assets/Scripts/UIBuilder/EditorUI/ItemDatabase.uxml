@@ -2,10 +2,11 @@
     <Style src="project://database/Assets/Scripts/UIBuilder/EditorUI/ItemDatabase.uss?fileID=7433441132597879392&amp;guid=e00377de393aa7243bd45bd40a1e9c70&amp;type=3#ItemDatabase" />
     <ui:VisualElement name="Container" style="flex-grow: 1; flex-direction: row; margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px;">
         <ui:VisualElement name="ItemsTab" style="width: 25%;">
-            <ui:VisualElement name="Header" style="flex-direction: row; border-bottom-color: rgb(0, 0, 0); margin-bottom: 5px; min-width: auto; max-width: none; max-height: 30px; min-height: 30px;">
-                <ui:Label text="Items" display-tooltip-when-elided="true" style="flex-grow: 1; -unity-font-style: bold; font-size: 24px; -unity-text-align: middle-left;" />
+            <ui:VisualElement name="Header" style="flex-direction: row; border-bottom-color: rgb(0, 0, 0); margin-bottom: 5px; min-width: auto; max-width: none; max-height: 30px; min-height: 30px; flex-grow: 1; justify-content: space-between; padding-left: 1px; padding-right: 2px;">
+                <ui:Label text="Items" display-tooltip-when-elided="true" class="ItemTabText" style="-unity-font-style: bold;" />
                 <ui:Button text="+" display-tooltip-when-elided="true" name="Btn_AddItem" />
             </ui:VisualElement>
+            <ui:DropdownField label="Sort" index="0" choices="Name, Type, Level" name="SortDropdown" class="ItemTabText" style="font-size: 17px; border-bottom-width: 1px; border-bottom-color: rgb(111, 111, 111); padding-bottom: 4px;" />
         </ui:VisualElement>
         <ui:VisualElement style="width: 1px; color: rgb(14, 14, 14); background-color: rgb(202, 202, 202); margin-left: 2px; margin-right: 2px;" />
         <ui:ScrollView name="ScrollView_Details" style="width: 75%; color: rgb(253, 253, 253); background-color: rgba(106, 106, 106, 0);">
