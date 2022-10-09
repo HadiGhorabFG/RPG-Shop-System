@@ -63,11 +63,11 @@ public class ItemDatabase : EditorWindow
 
         rootVisualElement.Q<Button>("Btn_AddItem").clicked += AddItem_OnClick;
         rootVisualElement.Q<Button>("Btn_DeleteItem").clicked += DeleteItem_OnClick;
-        sortDropdown.RegisterValueChangedCallback(SortItems);
+        sortDropdown.RegisterValueChangedCallback(SortDatabaseItems);
         
         LoadAllItems();
         GenerateListView();
-        SortItems(null);
+        SortDatabaseItems(null);
         
         detailSection.Q<TextField>("ItemName")
             .RegisterValueChangedCallback(evt =>
@@ -121,7 +121,7 @@ public class ItemDatabase : EditorWindow
         itemListView.onSelectionChange += ListView_onSelectionChange;
     }
     
-    private void SortItems(ChangeEvent<string> evt)
+    private void SortDatabaseItems(ChangeEvent<string> evt)
     {
         string sortOption = sortDropdown.value;
 
@@ -132,7 +132,7 @@ public class ItemDatabase : EditorWindow
         else if (sortOption == "Type")
             sortState = SortState.Type;
 
-        itemDatabase = global::SortItems.Sort(itemDatabase, sortState);
+        itemDatabase = SortItems.Sort(itemDatabase, sortState);
         itemListView.Rebuild();
     }
     
@@ -153,6 +153,9 @@ public class ItemDatabase : EditorWindow
         itemListView.style.height = itemDatabase.Count * itemHeight;
         
         ItemsContainer.UpdateItems();
+        
+        //Set newItem as focus in itemListView
+        itemListView.selectedIndex = itemDatabase.IndexOf(newItem);
         
         itemListView.Rebuild();
     }

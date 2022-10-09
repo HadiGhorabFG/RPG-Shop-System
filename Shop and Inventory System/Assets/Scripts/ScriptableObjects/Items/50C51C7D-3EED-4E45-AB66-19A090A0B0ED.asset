@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2fd94c93e1c93f46a2096b4c92cf92b, type: 3}
-  m_Name: HPPot
+  m_Name: 50C51C7D-3EED-4E45-AB66-19A090A0B0ED
   m_EditorClassIdentifier: 
-  id: 8E0484EA-7B0D-4823-8CFA-4D8957A8B0F1
+  id: 50C51C7D-3EED-4E45-AB66-19A090A0B0ED
   Type: 1
-  icon: {fileID: 21300000, guid: e52ea25af699fd445b7046374f81a5b9, type: 3}
-  name: Health Potion
+  icon: {fileID: 21300000, guid: 5d9ba4e7d0964044ea54abe409d81dfd, type: 3}
+  name: Apple
   itemLevel: 1
   stackable: 1
-  baseBuyValue: 20
-  baseSellValue: 10
+  baseBuyValue: 15
+  baseSellValue: 7
   sellPercentage: 0.5
