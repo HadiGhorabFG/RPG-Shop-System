@@ -1,7 +1,7 @@
 # RPG-Shop-System
 
 Hadi Ghorab FG21FT
-RPG Shop System framework for generic rpg games with buying and selling functionality and storing items in an inventory.
+RPG Shop System framework for generic rpg games with buying and selling functionality and storing items in an inventory, and ffxiv crafting sytem replica.
 
 Patterns:
 - Singletons, in `ShopUI.cs` and `ItemsManager.cs` as Instance.
