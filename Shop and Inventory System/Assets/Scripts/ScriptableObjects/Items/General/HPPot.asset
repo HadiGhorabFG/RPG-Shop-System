@@ -21,3 +21,9 @@ MonoBehaviour:
   baseBuyValue: 20
   baseSellValue: 10
   sellPercentage: 0.5
+  health: 20
+  mana: 0
+  damage: 0
+  criticalChance: 0
+  armour: 0
+  armourHealth: 0

@@ -10,13 +10,14 @@
         </ui:VisualElement>
         <ui:VisualElement style="width: 1px; color: rgb(14, 14, 14); background-color: rgb(202, 202, 202); margin-left: 2px; margin-right: 2px;" />
         <ui:ScrollView name="ScrollView_Details" style="width: 75%; color: rgb(253, 253, 253); background-color: rgba(106, 106, 106, 0);">
-            <ui:VisualElement name="Header" style="flex-direction: row; background-color: rgba(38, 38, 38, 0); -unity-text-align: upper-left; align-items: center; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; border-bottom-color: rgba(255, 183, 0, 0); border-bottom-width: 1px;">
-                <ui:Label text="Details" display-tooltip-when-elided="true" style="flex-grow: 1; -unity-font-style: bold; font-size: 24px; margin-left: 10px; margin-right: 10px; margin-top: 5px; margin-bottom: 5px; background-color: rgba(0, 0, 0, 0);" />
+            <ui:VisualElement name="Header" style="flex-direction: row; background-color: rgba(38, 38, 38, 0); -unity-text-align: upper-left; align-items: center; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; border-bottom-color: rgba(255, 183, 0, 0); border-bottom-width: 1px; justify-content: space-between;">
+                <ui:Label display-tooltip-when-elided="true" style="flex-grow: 0; -unity-font-style: bold; font-size: 24px; margin-left: 10px; margin-right: 10px; margin-top: 5px; margin-bottom: 5px; background-color: rgba(0, 0, 0, 0);" />
+                <ui:Label text="Item Name" display-tooltip-when-elided="true" binding-path="name" style="flex-grow: 0; -unity-font-style: bold; font-size: 24px; margin-left: 10px; margin-right: 10px; margin-top: 5px; margin-bottom: 5px; background-color: rgba(0, 0, 0, 0);" />
                 <ui:Button text="Delete" display-tooltip-when-elided="true" name="Btn_DeleteItem" style="height: 25px; margin-right: 10px;" />
             </ui:VisualElement>
             <ui:VisualElement name="Content" style="flex-grow: 1;">
                 <ui:VisualElement name="Row" style="flex-direction: row; align-items: center;">
-                    <ui:VisualElement name="Icon" style="padding-right: 0; width: 122px; height: 122px; background-image: url(&apos;project://database/Assets/Sprites/UnknownIcon.png?fileID=2800000&amp;guid=1293d1c07f0a7a6428043691e4cee13c&amp;type=3#UnknownIcon&apos;); border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; border-top-left-radius: 0; border-bottom-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; padding-left: 0; padding-top: 0; padding-bottom: 0; margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px;" />
+                    <ui:VisualElement name="Icon" style="padding-right: 0; width: 182.5px; height: 182.5px; background-image: url(&apos;project://database/Assets/Sprites/UnknownIcon.png?fileID=2800000&amp;guid=1293d1c07f0a7a6428043691e4cee13c&amp;type=3#UnknownIcon&apos;); border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; border-top-left-radius: 0; border-bottom-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; padding-left: 0; padding-top: 0; padding-bottom: 0; margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px; flex-grow: 0; justify-content: flex-start; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); background-color: rgb(43, 43, 43);" />
                     <ui:VisualElement name="Container" style="flex-grow: 1; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px; -unity-background-image-tint-color: rgb(56, 56, 56); background-color: rgb(65, 65, 65);">
                         <ui:Label text="General" display-tooltip-when-elided="true" name="Header" class="details-header" />
                         <ui:TextField picking-mode="Ignore" label="Name" value="filler text" binding-path="name" name="ItemName" style="padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px;" />
@@ -35,10 +36,29 @@
                 <ui:VisualElement name="Row" style="flex-direction: row;">
                     <ui:VisualElement name="Container" style="flex-grow: 1; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px; background-color: rgb(65, 65, 65);">
                         <ui:Label text="Vendor" display-tooltip-when-elided="true" name="Header" class="details-header" />
-                        <uie:IntegerField label="Buy Price" value="42" name="BuyPrice" binding-path="baseBuyValue" style="padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px;" />
+                        <uie:IntegerField label="Buy Price" value="42" name="BuyPrice" binding-path="baseBuyValue" class="editorfield" />
                         <ui:Slider picking-mode="Ignore" label="Sell Percentage" value="0.5" high-value="1" show-input-field="true" name="SellPercentage" binding-path="sellPercentage" style="padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px;">
                             <ui:IntegerField label="Sell Price" value="42" readonly="true" binding-path="baseSellValue" style="padding-left: 5px; justify-content: flex-start; align-items: stretch;" />
                         </ui:Slider>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="Row" style="flex-direction: row;">
+                    <ui:VisualElement name="Container" style="flex-grow: 1; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px; background-color: rgb(65, 65, 65); height: auto;">
+                        <ui:Label text="Attributes" display-tooltip-when-elided="true" name="Header" class="details-header" style="background-color: rgb(38, 38, 38); padding-left: 5px; padding-right: 3px; padding-top: 3px; padding-bottom: 3px; -unity-font-style: bold; font-size: 14px; margin-bottom: 5px;" />
+                        <ui:IntegerField label="Health Recovery" value="42" name="HealthAttribute" binding-path="health" class="editorfield" />
+                        <ui:IntegerField label="Mana Recovery" value="42" name="ManaAttribute" binding-path="mana" class="editorfield" />
+                        <ui:IntegerField label="Damage" value="42" name="DamageAttribute" binding-path="damage" class="editorfield" />
+                        <ui:Slider picking-mode="Ignore" label="Critical Chance" value="0.5" high-value="1" show-input-field="true" name="CritAttribute" binding-path="criticalChance" class="editorfield" />
+                        <ui:IntegerField label="Armour" value="42" name="ArmourAttribute" binding-path="armour" class="editorfield" />
+                        <ui:IntegerField label="Health" value="42" name="ArmourHealthAttribute" binding-path="armourHealth" class="editorfield" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="Row" style="flex-direction: row;">
+                    <ui:VisualElement name="Container" style="flex-grow: 1; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px; background-color: rgb(65, 65, 65);">
+                        <ui:Label text="Crafting" display-tooltip-when-elided="true" name="Header" class="details-header" />
+                        <uie:IntegerField label="Durability" value="42" name="Durability" binding-path="craftingMaxDurability" class="editorfield" />
+                        <uie:IntegerField label="Progress" value="42" name="Progress" binding-path="craftingMaxProgress" class="editorfield" />
+                        <uie:IntegerField label="Quality" value="42" name="Quality" binding-path="craftingMaxQuality" class="editorfield" />
                     </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>

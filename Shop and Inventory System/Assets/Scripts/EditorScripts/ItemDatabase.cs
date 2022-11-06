@@ -19,11 +19,20 @@ public class ItemDatabase : EditorWindow
     private static VisualTreeAsset itemRowTemplate;
     private ListView itemListView;
     private float itemHeight = 40;
+    private EnumField itemTypeEnumField;
 
     private ScrollView detailSection;
     private VisualElement largeDisplayIcon;
     private Item activeItem;
 
+    //attributes
+    private IntegerField healthAttribute;
+    private IntegerField manaAttribute;
+    private IntegerField damageAttribute;
+    private Slider critAttribute;
+    private IntegerField armourAttribute;
+    private IntegerField armourHealthAttribute;
+    
     public enum SortState
     {
         Name, 
@@ -54,16 +63,26 @@ public class ItemDatabase : EditorWindow
         itemRowTemplate = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Scripts/UIBuilder/EditorUI/ItemRowTemplate.uxml");
         
         defaultItemIcon = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Sprites/UnknownIcon.png", typeof(Sprite));
+        itemTypeEnumField = rootVisualElement.Q<EnumField>("ItemType");
         itemsTab = rootVisualElement.Q<VisualElement>("ItemsTab");
         sortDropdown = itemsTab.Q<DropdownField>("SortDropdown");
 
         detailSection = rootVisualElement.Q<ScrollView>("ScrollView_Details");
         detailSection.style.visibility = Visibility.Hidden;
         largeDisplayIcon = detailSection.Q<VisualElement>("Icon");
+        
+        //attributes
+        healthAttribute = rootVisualElement.Q<IntegerField>("HealthAttribute");
+        manaAttribute = rootVisualElement.Q<IntegerField>("ManaAttribute");
+        damageAttribute = rootVisualElement.Q<IntegerField>("DamageAttribute");
+        critAttribute = rootVisualElement.Q<Slider>("CritAttribute");
+        armourAttribute = rootVisualElement.Q<IntegerField>("ArmourAttribute");
+        armourHealthAttribute = rootVisualElement.Q<IntegerField>("ArmourHealthAttribute");
 
         rootVisualElement.Q<Button>("Btn_AddItem").clicked += AddItem_OnClick;
         rootVisualElement.Q<Button>("Btn_DeleteItem").clicked += DeleteItem_OnClick;
         sortDropdown.RegisterValueChangedCallback(SortDatabaseItems);
+        itemTypeEnumField.RegisterValueChangedCallback(ItemTypeEnumChanged);
         
         LoadAllItems();
         GenerateListView();
@@ -136,6 +155,49 @@ public class ItemDatabase : EditorWindow
         itemListView.Rebuild();
     }
     
+    private void ItemTypeEnumChanged(ChangeEvent<Enum> evt)
+    {
+        UpdateAttributes(evt.newValue.ToString());
+    }
+
+    private void UpdateAttributes(string enumText)
+    {
+        healthAttribute.style.visibility = Visibility.Hidden;
+        healthAttribute.style.display = DisplayStyle.None;
+        manaAttribute.style.visibility = Visibility.Hidden;
+        manaAttribute.style.display = DisplayStyle.None;
+        damageAttribute.style.visibility = Visibility.Hidden;
+        damageAttribute.style.display = DisplayStyle.None;
+        critAttribute.style.visibility = Visibility.Hidden;
+        critAttribute.style.display = DisplayStyle.None;
+        armourAttribute.style.visibility = Visibility.Hidden;
+        armourAttribute.style.display = DisplayStyle.None;
+        armourHealthAttribute.style.visibility = Visibility.Hidden;
+        armourHealthAttribute.style.display = DisplayStyle.None;
+        
+        if (enumText == "general")
+        {
+            healthAttribute.style.visibility = Visibility.Visible;
+            healthAttribute.style.display = DisplayStyle.Flex;
+            manaAttribute.style.visibility = Visibility.Visible;
+            manaAttribute.style.display = DisplayStyle.Flex;
+        }
+        else if(enumText == "weapon")
+        {
+            damageAttribute.style.visibility = Visibility.Visible;
+            damageAttribute.style.display = DisplayStyle.Flex;
+            critAttribute.style.visibility = Visibility.Visible;
+            critAttribute.style.display = DisplayStyle.Flex;
+        }
+        else if (enumText == "armour")
+        {
+            armourAttribute.style.visibility = Visibility.Visible;
+            armourAttribute.style.display = DisplayStyle.Flex;
+            armourHealthAttribute.style.visibility = Visibility.Visible;
+            armourHealthAttribute.style.display = DisplayStyle.Flex;
+        }
+    }
+    
     private void AddItem_OnClick()
     {
         //Create an instance of the scriptable object and set the default parameters
@@ -190,5 +252,7 @@ public class ItemDatabase : EditorWindow
         }
 
         detailSection.style.visibility = Visibility.Visible;
+        
+        UpdateAttributes(itemTypeEnumField.value.ToString());
     }
 }

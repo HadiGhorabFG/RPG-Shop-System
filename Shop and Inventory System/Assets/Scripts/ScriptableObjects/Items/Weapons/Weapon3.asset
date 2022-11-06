@@ -12,10 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2fd94c93e1c93f46a2096b4c92cf92b, type: 3}
   m_Name: Weapon3
   m_EditorClassIdentifier: 
+  id: 8B05E71C-BDA2-4BAD-9285-7F6F80578E4E
   Type: 0
   icon: {fileID: 21300000, guid: ae496f5dad56ea645b72d374a0376368, type: 3}
   name: Book of Execution
   itemLevel: 2
   stackable: 0
   baseBuyValue: 120
-  baseSellValue: 30
+  baseSellValue: 60
+  sellPercentage: 0.5
+  health: 0
+  mana: 0
+  damage: 500
+  criticalChance: 0.475
+  armour: 0
+  armourHealth: 0

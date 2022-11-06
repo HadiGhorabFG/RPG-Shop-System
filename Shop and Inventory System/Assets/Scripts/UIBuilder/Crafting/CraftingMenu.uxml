@@ -1,0 +1,167 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Scripts/UIBuilder/InventoryUSS.uss?fileID=7433441132597879392&amp;guid=811c9146f267b8848bf305a28f26a687&amp;type=3#InventoryUSS" />
+    <Style src="project://database/Assets/Scripts/UIBuilder/CraftingUSS.uss?fileID=7433441132597879392&amp;guid=1d8bceaa0e7576342b4430d82732228e&amp;type=3#CraftingUSS" />
+    <Style src="project://database/Assets/Scripts/UIBuilder/ProgressbarUSS.uss?fileID=7433441132597879392&amp;guid=fea68227719b97740be3369b4d38f11b&amp;type=3#ProgressbarUSS" />
+    <ui:VisualElement name="Root" style="flex-grow: 1; align-items: center; justify-content: center; flex-direction: row;">
+        <ui:VisualElement name="Inventory" style="display: none; visibility: hidden;">
+            <Style src="project://database/Assets/Scripts/UIBuilder/InventoryUSS.uss?fileID=7433441132597879392&amp;guid=811c9146f267b8848bf305a28f26a687&amp;type=3#InventoryUSS" />
+            <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center;">
+                <ui:VisualElement name="InventoryRoot" class="slotPriceText" style="visibility: visible; max-width: 960px; max-height: 810px; width: 920px; height: 810px;">
+                    <ui:VisualElement name="Inventory" class="FullBoxMenu">
+                        <ui:VisualElement name="Header" class="InventoryHeaderContainer">
+                            <ui:VisualElement style="flex-direction: row;">
+                                <ui:Label text="Inventory" display-tooltip-when-elided="true" name="Name" class="HeaderText" style="-unity-text-align: upper-left; border-bottom-width: 0;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-direction: row;">
+                                <ui:DropdownField label="Sort" index="0" choices="Price,Quantity,Level,Type" name="SortOptions" style="font-size: 30px; -unity-text-align: upper-right; height: 50px; width: 380px; margin-left: -80px; -unity-text-outline-width: 0;" />
+                                <ui:Label text="0/24" display-tooltip-when-elided="true" name="Space" class="HeaderText" style="-unity-text-align: upper-left; border-bottom-width: 0; padding-left: 30px;" />
+                                <ui:Label text="500€" display-tooltip-when-elided="true" name="Money" class="HeaderText" style="-unity-text-align: upper-right; border-bottom-width: 0; margin-left: 30px;" />
+                                <ui:Button text="X" display-tooltip-when-elided="true" name="ExitButton" class="ShopExitButton" style="background-color: rgba(188, 188, 188, 0); margin-left: 30px; border-bottom-width: 5px;" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="SlotContainer" class="SlotContainer" />
+                        <ui:VisualElement class="botContainer">
+                            <ui:VisualElement style="padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px;">
+                                <ui:Label text="Name of Highlighted Item" display-tooltip-when-elided="true" name="HighlightedItemText" class="HighlightedItemText" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-direction: row;">
+                                <ui:Button text="Sell" display-tooltip-when-elided="true" name="SellButton" class="ShopTradeContainer" style="background-color: rgba(188, 188, 188, 0); margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0;" />
+                                <ui:Label text="0" display-tooltip-when-elided="true" name="TotalSellText" class="ShopTradeContainer" style="border-bottom-width: 1px;" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="GhostIcon" style="position: absolute; visibility: hidden; width: 128px; height: 128px;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="crafting" style="width: 920px; height: 810px;">
+            <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center;">
+                <ui:VisualElement name="CraftRoot" class="slotPriceText" style="visibility: visible; max-width: 960px; max-height: 810px; width: 750px; height: 810px;">
+                    <ui:VisualElement name="Crafting" class="FullBoxMenu">
+                        <ui:VisualElement name="Header" class="InventoryHeaderContainer">
+                            <ui:VisualElement style="flex-direction: row;">
+                                <ui:Label text="Crafting" display-tooltip-when-elided="true" name="Name" class="HeaderText" style="-unity-text-align: upper-left; border-bottom-width: 0;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-direction: row;">
+                                <ui:DropdownField label="Sort" index="0" choices="Price,Quantity,Level,Type" name="SortOptions" style="font-size: 30px; -unity-text-align: upper-right; height: 50px; width: 380px; margin-left: -80px; -unity-text-outline-width: 0; display: none; visibility: hidden;" />
+                                <ui:Label text="0/24" display-tooltip-when-elided="true" name="Space" class="HeaderText" style="-unity-text-align: upper-left; border-bottom-width: 0; padding-left: 30px; display: none;" />
+                                <ui:Label text="500€" display-tooltip-when-elided="true" name="Money" class="HeaderText" style="-unity-text-align: upper-right; border-bottom-width: 0; margin-left: 30px; display: none; visibility: hidden;" />
+                                <ui:Button text="X" display-tooltip-when-elided="true" name="ExitButton" class="ShopExitButton" style="background-color: rgba(188, 188, 188, 0); margin-left: 30px; border-bottom-width: 5px;" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="CraftingContainer" class="SlotContainer" style="flex-grow: 1;">
+                            <ui:VisualElement name="CraftingHeaderContainer" class="InventoryHeaderContainer" style="width: 100%; height: 110px; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; flex-direction: row; justify-content: space-between; align-items: center;">
+                                <ui:VisualElement name="Header" style="flex-direction: row; justify-content: space-between; align-items: stretch; width: 100%; height: 100%;">
+                                    <ui:VisualElement style="flex-direction: row; align-items: center;">
+                                        <ui:VisualElement style="width: 100px; height: 100px; background-color: rgb(29, 29, 29); background-image: url(&apos;project://database/Assets/Sprites/ItemSlotBackground.png?fileID=2800000&amp;guid=7c0e1dfa9273ff54bb462f276f672ec6&amp;type=3#ItemSlotBackground&apos;); justify-content: center; align-items: center;">
+                                            <ui:VisualElement name="Icon" style="width: 80%; height: 80%; background-color: rgba(29, 29, 29, 0); background-image: url(&apos;project://database/Assets/Sprites/RPG_inventory_icons/boots.png?fileID=2800000&amp;guid=e420c5bc93cb2604695a893500c897e3&amp;type=3#boots&apos;); justify-content: flex-start;" />
+                                        </ui:VisualElement>
+                                        <ui:Label tabindex="-1" text="Item Name" display-tooltip-when-elided="true" binding-path="name" class="HeaderText insideHeaderText InsideHeadText" style="-unity-text-align: lower-right; padding-left: 30px; padding-bottom: 0; padding-right: 0;" />
+                                    </ui:VisualElement>
+                                    <ui:VisualElement style="width: auto; height: 100%; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px; flex-direction: column; justify-content: space-between;">
+                                        <ui:VisualElement style="flex-direction: row;">
+                                            <ui:Label tabindex="-1" text="Level" display-tooltip-when-elided="true" class="HeaderText insideHeaderText InsideHeadText" style="-unity-text-align: lower-right;" />
+                                            <ui:Label tabindex="-1" text="0" display-tooltip-when-elided="true" name="CraftingLevel" binding-path="itemLevel" class="HeaderText insideHeaderText InsideHeadText" style="-unity-text-align: lower-right;" />
+                                        </ui:VisualElement>
+                                        <ui:Label tabindex="-1" text="Step 0" display-tooltip-when-elided="true" name="StepText" class="HeaderText insideHeaderText InsideHeadText" style="-unity-text-align: lower-right;" />
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                            <ui:VisualElement name="CradtingBodyContainer" class="InventoryHeaderContainer" style="width: 100%; height: auto; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; flex-direction: row; justify-content: space-between; align-items: center;">
+                                <ui:VisualElement name="BodyContent" style="flex-direction: row; align-items: center;">
+                                    <ui:VisualElement class="BodyVisualElement">
+                                        <ui:Label tabindex="-1" text="Durability" display-tooltip-when-elided="true" class="HeaderText InsideHeaderText insideHeaderText InsideHeadText" />
+                                        <ui:VisualElement name="DurabilityProgress" style="width: 100%; height: 100px; align-items: flex-start;">
+                                            <ui:VisualElement style="flex-direction: row;">
+                                                <ui:Label tabindex="-1" text="0" display-tooltip-when-elided="true" name="CurrentDurabilityText" class="HeaderText" style="font-size: 30px;" />
+                                                <ui:Label tabindex="-1" text="/" display-tooltip-when-elided="true" class="HeaderText" style="font-size: 30px;" />
+                                                <ui:Label tabindex="-1" text="25" display-tooltip-when-elided="true" name="MaxDurabilityText" binding-path="craftingMaxDurability" class="HeaderText" style="font-size: 30px;" />
+                                            </ui:VisualElement>
+                                        </ui:VisualElement>
+                                        <ui:Label tabindex="-1" text="Condition" display-tooltip-when-elided="true" class="HeaderText insideHeaderText InsideHeadText" />
+                                        <ui:VisualElement style="width: 100%; height: auto; align-items: flex-start;">
+                                            <ui:VisualElement style="flex-direction: row; justify-content: flex-start; align-items: center; padding-bottom: 10px;">
+                                                <ui:VisualElement style="height: 15px; width: 15px; background-image: url(&apos;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=4456449167576933126&amp;guid=b84f6f9b439bc4343922f5c7b71a5fd6&amp;type=3#dropdown-arrow@2x&apos;); -unity-background-image-tint-color: rgb(255, 197, 0);" />
+                                                <ui:Label tabindex="-1" text="Excellent" display-tooltip-when-elided="true" class="HeaderText" style="padding-left: 5px; padding-right: 0; padding-top: 0; padding-bottom: 0; font-size: 30px;" />
+                                            </ui:VisualElement>
+                                        </ui:VisualElement>
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                                <ui:VisualElement name="BodyContent" style="flex-direction: row; align-items: center; flex-grow: 1; height: 100%;">
+                                    <ui:VisualElement class="BodyVisualElement" style="width: 250px; height: 100%; background-color: rgb(29, 29, 29); background-image: none; justify-content: center; align-items: flex-start; flex-grow: 1; margin-left: 5px;">
+                                        <ui:VisualElement name="ProgressBar" style="width: 100%; height: auto; align-items: flex-start; padding-bottom: 20px; flex-direction: column;">
+                                            <ui:Label tabindex="-1" text="Progress" display-tooltip-when-elided="true" name="Header" class="HeaderText insideHeaderText InsideHeadText" />
+                                            <ui:VisualElement name="ProgressBarContainer" style="width: 100%; align-items: center; flex-direction: row;">
+                                                <ui:Label tabindex="-1" text="0" display-tooltip-when-elided="true" name="CurrentProgressText" class="InsideHeadText ProgressBarValueText" />
+                                                <ui:Label tabindex="-1" text="/" display-tooltip-when-elided="true" name="ProgressTextSlash" class="InsideHeadText ProgressBarValueText" style="margin-left: 0; max-width: initial; min-width: initial;" />
+                                                <ui:Label tabindex="-1" text="55682" display-tooltip-when-elided="true" name="ProgressMaxText" binding-path="craftingMaxProgress" class="InsideHeadText ProgressBarValueText" style="max-width: initial; min-width: initial; margin-left: 0;" />
+                                            </ui:VisualElement>
+                                        </ui:VisualElement>
+                                        <ui:VisualElement name="QualityBar" style="width: 100%; height: auto; align-items: flex-start; padding-bottom: 20px; flex-direction: column;">
+                                            <ui:Label tabindex="-1" text="Quality" display-tooltip-when-elided="true" name="Header" class="HeaderText insideHeaderText InsideHeadText" />
+                                            <ui:VisualElement name="QualityBarContainer" style="width: 100%; align-items: center; flex-direction: row;">
+                                                <ui:Label tabindex="-1" text="0" display-tooltip-when-elided="true" name="CurrentQualityText" class="InsideHeadText ProgressBarValueText" />
+                                                <ui:Label tabindex="-1" text="/" display-tooltip-when-elided="true" name="ProgressTextSlash" class="InsideHeadText ProgressBarValueText" style="margin-left: 0; max-width: initial; min-width: initial;" />
+                                                <ui:Label tabindex="-1" text="55682" display-tooltip-when-elided="true" name="QualityMaxText" binding-path="craftingMaxQuality" class="InsideHeadText ProgressBarValueText" style="max-width: initial; min-width: initial; margin-left: 0;" />
+                                            </ui:VisualElement>
+                                        </ui:VisualElement>
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                            <ui:VisualElement name="SkillsContent" class="botContainer" style="display: flex; visibility: visible; overflow: hidden; align-items: center; width: 100%;">
+                                <ui:VisualElement style="flex-direction: row; width: auto; justify-content: space-around; align-items: center;">
+                                    <ui:Label tabindex="-1" text="Skills" display-tooltip-when-elided="true" class="HeaderText insideHeaderText" style="padding-right: 10px;" />
+                                </ui:VisualElement>
+                                <ui:VisualElement style="flex-direction: row; width: 100%; justify-content: space-around;">
+                                    <ui:VisualElement name="SkillOne" class="Skill">
+                                        <ui:VisualElement name="Icon" style="width: 80%; height: 80%; background-color: rgba(29, 29, 29, 0); background-image: url(&apos;project://database/Assets/Sprites/Blink/Art/Icons/Classes/Warrior/Deathknight/Deathknight8.png?fileID=2800000&amp;guid=d8108e50be9cf7f49878337929803edd&amp;type=3#Deathknight8&apos;); justify-content: flex-start;" />
+                                    </ui:VisualElement>
+                                    <ui:VisualElement name="SkillTwo" class="Skill">
+                                        <ui:VisualElement name="Icon" style="width: 80%; height: 80%; background-color: rgba(29, 29, 29, 0); background-image: url(&apos;project://database/Assets/Sprites/Blink/Art/Icons/Classes/Warrior/Guardian/Guardian8.png?fileID=2800000&amp;guid=8a96b38c76be79946a150249547b07bc&amp;type=3#Guardian8&apos;); justify-content: flex-start;" />
+                                    </ui:VisualElement>
+                                    <ui:VisualElement name="SkillThree" class="Skill">
+                                        <ui:VisualElement name="Icon" style="width: 80%; height: 80%; background-color: rgba(29, 29, 29, 0); background-image: url(&apos;project://database/Assets/Sprites/Blink/Art/Icons/Classes/HolyDarkness/Priest/Priest8.png?fileID=2800000&amp;guid=feb8709f10385a94095b55fe8d0f625c&amp;type=3#Priest8&apos;); justify-content: flex-start;" />
+                                    </ui:VisualElement>
+                                    <ui:VisualElement name="SkillFour" class="Skill">
+                                        <ui:VisualElement name="Icon" style="width: 80%; height: 80%; background-color: rgba(29, 29, 29, 0); background-image: url(&apos;project://database/Assets/Sprites/Blink/Art/Icons/Classes/Symbiose/Enchanter/Enchanter18.png?fileID=2800000&amp;guid=0f182fb2863faa7449e020de33b77e68&amp;type=3#Enchanter18&apos;); justify-content: flex-start;" />
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="CPContent" class="botContainer" style="display: flex; visibility: visible; overflow: hidden;">
+                            <ui:VisualElement style="flex-direction: row; width: auto; justify-content: space-around; align-items: center;">
+                                <ui:Label tabindex="-1" text="CP" display-tooltip-when-elided="true" class="HeaderText insideHeaderText" style="padding-right: 10px;" />
+                                <ui:VisualElement style="flex-direction: row;">
+                                    <ui:Label tabindex="-1" text="0" display-tooltip-when-elided="true" name="CurrentCPText" class="HeaderText insideHeaderText" />
+                                    <ui:Label tabindex="-1" text="/" display-tooltip-when-elided="true" name="CPSlash" class="HeaderText insideHeaderText" />
+                                    <ui:Label tabindex="-1" text="150" display-tooltip-when-elided="true" name="MaxCPText" class="HeaderText insideHeaderText" />
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="CraftingSkillToolTip" picking-mode="Ignore" style="visibility: hidden; display: none; position: absolute; top: 825px; left: 587px;">
+            <ui:VisualElement style="width: 260px; height: 118px; background-color: rgb(29, 29, 29); padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px; border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; border-left-color: rgb(255, 197, 0); border-right-color: rgb(255, 197, 0); border-top-color: rgb(255, 197, 0); border-bottom-color: rgb(255, 197, 0);">
+                <ui:VisualElement style="width: 100%; height: 100%; background-color: rgb(28, 32, 36); justify-content: space-between; padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px;">
+                    <ui:Label tabindex="-1" text="Skill Name" display-tooltip-when-elided="true" name="craftSkillName" binding-path="skillName" class="HeaderText" style="font-size: 25px; padding-bottom: 0; margin-bottom: 0; margin-top: -5px;" />
+                    <ui:VisualElement style="margin-bottom: 0; margin-top: -5px;">
+                        <ui:Label tabindex="-1" text="Increases quality and requires no CP." display-tooltip-when-elided="true" name="craftSkillDesc" binding-path="description" class="HeaderText" style="font-size: 15px; white-space: normal;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-direction: row; justify-content: space-between; margin-bottom: 0; margin-top: -5px;">
+                        <ui:VisualElement style="flex-direction: row;">
+                            <ui:Label tabindex="-1" text="CP:" display-tooltip-when-elided="true" name="craftSkillCP" class="HeaderText" style="font-size: 15px; padding-bottom: 0; padding-right: 0;" />
+                            <ui:Label tabindex="-1" text="0" display-tooltip-when-elided="true" name="craftSkillCPValue" binding-path="skillCP" class="HeaderText" style="font-size: 15px; padding-bottom: 0;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-direction: row;">
+                            <ui:Label tabindex="-1" text="Success Chance:" display-tooltip-when-elided="true" name="craftSkillChance" class="HeaderText" style="font-size: 15px; padding-bottom: 0; padding-right: 0;" />
+                            <ui:Label tabindex="-1" text="100" display-tooltip-when-elided="true" name="craftSkillChanceValue" binding-path="successRate100" class="HeaderText" style="font-size: 15px; padding-bottom: 0; padding-right: 0;" />
+                            <ui:Label tabindex="-1" text="%" display-tooltip-when-elided="true" name="craftSkillChancePercentmark" class="HeaderText" style="font-size: 15px; padding-bottom: 0; padding-left: 0;" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

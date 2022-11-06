@@ -2,7 +2,7 @@
     <Style src="project://database/Assets/Scripts/UIBuilder/InventoryUSS.uss?fileID=7433441132597879392&amp;guid=811c9146f267b8848bf305a28f26a687&amp;type=3#InventoryUSS" />
     <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center;">
         <ui:VisualElement name="InventoryRoot" class="slotPriceText" style="visibility: visible; max-width: 960px; max-height: 810px; width: 920px; height: 810px;">
-            <ui:VisualElement name="Inventory" style="flex-grow: 1; width: 100%; height: 100%; max-width: 100%; max-height: 100%; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; background-color: rgb(28, 32, 36); border-left-color: rgb(255, 197, 0); border-right-color: rgb(255, 197, 0); border-top-color: rgb(255, 197, 0); border-bottom-color: rgb(255, 197, 0); border-left-width: 0; border-right-width: 0; border-top-width: 5px; border-bottom-width: 0;">
+            <ui:VisualElement name="Inventory" class="FullBoxMenu">
                 <ui:VisualElement name="Header" class="InventoryHeaderContainer">
                     <ui:VisualElement style="flex-direction: row;">
                         <ui:Label text="Inventory" display-tooltip-when-elided="true" name="Name" class="HeaderText" style="-unity-text-align: upper-left; border-bottom-width: 0;" />

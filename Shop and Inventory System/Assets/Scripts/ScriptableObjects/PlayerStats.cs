@@ -7,6 +7,8 @@ using UnityEngine;
 [CreateAssetMenu]
 public class PlayerStats : ScriptableObject
 {
+    public int cp;
+    
     public int money;
     public int maxInvSlots = 24;
     [SerializeField] private List<FItemData> inventory = new List<FItemData>();

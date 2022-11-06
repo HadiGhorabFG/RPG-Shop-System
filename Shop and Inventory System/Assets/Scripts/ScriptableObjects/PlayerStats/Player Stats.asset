@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0befafce170e324689b946721043eaf, type: 3}
   m_Name: Player Stats
   m_EditorClassIdentifier: 
+  cp: 180
   money: 1620
   maxInvSlots: 24
   inventory:
